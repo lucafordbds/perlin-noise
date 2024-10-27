@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Terrain Generator & Moving Graph</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+      .section {
+        width: 100%;
+        max-width: 800px;
+        margin-bottom: 40px;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .controls label {
+        margin-right: 10px;
+      }
+      .flex-container {
+        display: flex;
+        gap: 20px;
+        justify-content: space-around;
+      }
+      canvas {
+        display: block;
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section" id="terrainGenerator">
+      <h2>Interactive Terrain Generator</h2>
+      <div class="controls">
+        <div>
+          <label for="resolution">Resolution (Lower is more detailed):</label>
+          <input type="range" id="resolution" min="1" max="20" value="10" />
+        </div>
+        <div>
+          <label for="scale">Noise Scale (More = finer details):</label>
+          <input type="range" id="scale" min="10" max="200" value="100" />
+        </div>
+        <div>
+          <label for="canvasSize">Canvas Size:</label>
+          <input
+            type="number"
+            id="canvasSize"
+            min="200"
+            max="1000"
+            value="600"
+          />
+        </div>
+        <div>
+          <label for="waterColor">Water Color:</label>
+          <input type="color" id="waterColor" value="#1EB0FB" />
+        </div>
+        <div>
+          <label for="sandColor">Sand Color:</label>
+          <input type="color" id="sandColor" value="#FFF6C1" />
+        </div>
+        <div>
+          <label for="grassColor">Grass Color:</label>
+          <input type="color" id="grassColor" value="#76EF7C" />
+        </div>
+        <div>
+          <label for="forestColor">Forest Color:</label>
+          <input type="color" id="forestColor" value="#16B58D" />
+        </div>
+      </div>
+      <button onclick="generateTerrain()">Generate Terrain</button>
+      <div id="terrainCanvasWrapper">
+        <div id="terrainCanvas"></div>
+      </div>
+    </div>
+
+    <div class="section" id="twoDimensionalSection">
+      <h2>One Dimensional / Two Dimensional Noise</h2>
+      <div class="flex-container">
+        <div id="main"></div>
+        <div id="twoDimensional"></div>
+      </div>
+    </div>
+
+    <div class="section" id="movingGraphSection">
+      <h2>Graph Noise</h2>
+      <div class="flex-container">
+        <div id="graph"></div>
+        <div id="movingGraph"></div>
+      </div>
+    </div>
+
+    <!-- Importar la librería p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <!-- Importar los archivos JavaScript externos -->
+    <script src="procedural-front.js"></script>
+    <script src="moving_graph.js"></script>
+    <script src="graph.js"></script>
+    <script src="two_dimensional.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
